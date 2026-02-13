@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Smart Bookmark App
 
-## Getting Started
+A full-stack Smart Bookmark Manager built using Next.js (App Router), Supabase (Auth, Database, Realtime), and Tailwind CSS.
 
-First, run the development server:
+🚀 Live Demo
 
-```bash
+https://smart-bookmark-app-eight-black.vercel.app
+
+✅ Features
+
+Google OAuth login (Supabase Auth)
+
+Add bookmark (URL + title)
+
+Delete bookmarks
+
+Bookmarks are private per user (Row Level Security)
+
+Realtime updates across multiple tabs
+
+Responsive UI
+
+Deployed on Vercel
+
+🛠 Tech Stack
+
+Next.js (App Router)
+
+Supabase (Authentication, PostgreSQL, Realtime)
+
+Tailwind CSS
+
+Vercel Deployment
+
+🔐 Authentication
+
+Google OAuth enabled via Supabase.
+
+Only authenticated users can access the dashboard.
+
+No email/password authentication implemented (as required).
+
+🗄 Database & Security
+
+Bookmarks table includes:
+
+id
+
+user_id
+
+title
+
+url
+
+created_at
+
+Row Level Security (RLS) enabled.
+
+Policies ensure:
+
+Users can only SELECT their own bookmarks
+
+Users can only INSERT bookmarks with their own user_id
+
+Users can only DELETE their own bookmarks
+
+This guarantees privacy between users.
+
+⚡ Realtime Implementation
+
+Supabase Realtime subscription is enabled on the bookmarks table.
+
+Subscription is filtered by user_id.
+
+When a bookmark is added or deleted:
+
+All open tabs update instantly without refresh.
+
+🚧 Problems Faced & Solutions
+1. OAuth Redirect Issues
+
+Problem:
+Google login was not redirecting correctly after deployment.
+
+Solution:
+Configured correct redirect URLs in Supabase:
+
+Localhost for development
+
+Vercel production URL for deployment
+
+2. Row Level Security Blocking Queries
+
+Problem:
+Bookmarks were not inserting due to RLS restrictions.
+
+Solution:
+Created proper RLS policies using:
+auth.uid() = user_id
+
+This allowed users to access only their own data.
+
+3. Realtime Not Triggering
+
+Problem:
+Realtime updates were not syncing across tabs.
+
+Solution:
+Enabled replication for the bookmarks table and implemented Supabase channel subscription filtered by user_id.
+
+4. Environment Variables Not Working in Production
+
+Problem:
+Supabase keys were undefined after deployment.
+
+Solution:
+Added environment variables in Vercel:
+
+NEXT_PUBLIC_SUPABASE_URL
+
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+Redeployed the project.
+
+⚙️ Local Setup
+
+Clone repository
+
+git clone https://github.com/Preetham144/smart-bookmark-app.git
+cd smart-bookmark-app
+
+
+Install dependencies
+
+npm install
+
+
+Create .env.local
+
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_publishable_key
+
+
+Run development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📦 Submission Links
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Live URL:
+https://smart-bookmark-app-eight-black.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GitHub Repository:
+https://github.com/Preetham144/smart-bookmark-app
