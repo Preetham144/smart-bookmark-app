@@ -130,15 +130,6 @@ git clone https://github.com/Preetham144/smart-bookmark-app.git
 cd smart-bookmark-app
 
 
-Install dependencies
-
-npm install
-
-
-Create .env.local
-
-NEXT_PUBLIC_SUPABASE_URL=your_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_publishable_key
 
 
 
