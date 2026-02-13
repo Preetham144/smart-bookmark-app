@@ -145,10 +145,3 @@ Run development server
 
 npm run dev
 
-📦 Submission Links
-
-Live URL:
-https://smart-bookmark-app-eight-black.vercel.app
-
-GitHub Repository:
-https://github.com/Preetham144/smart-bookmark-app
