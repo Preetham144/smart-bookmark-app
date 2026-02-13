@@ -141,7 +141,4 @@ NEXT_PUBLIC_SUPABASE_URL=your_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_publishable_key
 
 
-Run development server
-
-npm run dev
 
